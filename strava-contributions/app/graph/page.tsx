@@ -8,10 +8,6 @@ interface Activity {
   distance: string;
 }
 
-interface ActivityGraphProps {
-  activities: Activity[];
-}
-
 function isLeapYear(date: Date) {
   const year = date.getFullYear();
   return year % 4 === 0
@@ -71,7 +67,7 @@ const calculateNormalizedWeight = (
   return dayValue / maxValue;
 };
 
-const ActivityGraph: React.FC<ActivityGraphProps> = () => {
+const ActivityGraph = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true);
   const fetchActivities = async () => {
