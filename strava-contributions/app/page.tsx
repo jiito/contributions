@@ -19,8 +19,13 @@ export default function Home() {
               activation ƒunction
             </span>
           </p>
-          <Link className="p-4 bg-orange-500 text-white mt-10" href={URL}>
-            Connect with Strava
+          <Link className="" href={URL}>
+            <Image
+              src="/btn_strava_connectwith_orange.svg"
+              alt="Strava connect button"
+              width={193}
+              height={48}
+            />
           </Link>
         </div>
       </div>
