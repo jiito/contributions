@@ -5,17 +5,17 @@ export default function Home() {
   const clientID = 120867;
   const URL = `http://www.strava.com/oauth/authorize?client_id=${clientID}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_URL}/login&approval_prompt=force&scope=activity:read_all`;
   return (
-    <main className="relative w-screen h-screen p-24">
-      <h1 className="absolute top-0 italic text-[20rem] font-bold text-black ">
+    <main className="relative w-screen h-screen p-24 sm:p-4">
+      <h1 className="lg:absolute sm:block top-0 italic text-[20rem] sm:leading-tight font-bold text-black ">
         crkd
       </h1>
-      <div className="flex flex-row absolute left-96 top-1/2 transform -translate-y-1/2 gap-4">
+      <div className="flex flex-row lg:absolute left-96 top-1/2 transform -translate-y-1/2 gap-4">
         <div className="w-2 h-[50vh] bg-black"></div>
         <div className="flex-1 flex flex-col justify-center">
-          <p className="text-[3rem] leading-10  text-black">
+          <p className="text-[5vh] leading-10  text-black">
             Drop #1
             <br />
-            <span className="text-[10rem] leading-[9rem] p-4 font-mono font-bold tracking-tighter ">
+            <span className="text-[10vh] leading-[9rem] p-4 font-mono font-bold tracking-tighter ">
               activation ƒunction
             </span>
           </p>
@@ -25,7 +25,7 @@ export default function Home() {
         </div>
       </div>
 
-      <h1 className="absolute bottom-0 italic text-[20rem] font-bold text-black ">
+      <h1 className="sm:block lg:absolute bottom-0 italic text-[20rem] font-bold text-black ">
         clb
       </h1>
 
