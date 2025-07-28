@@ -10,6 +10,26 @@ class StravaAdapter {
     return;
   }
 
+  async getAllActivities() {
+    try {
+      const response = await fetch('/api/activities', {
+        headers: {
+          Authorization: `Bearer ${this.access_token}`,
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+      
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching activities:", error);
+      return [];
+    }
+  }
+
+  // Keep for backward compatibility
   getActivitiesPage(page?: number) {
     return fetch(
       `https://www.strava.com/api/v3/athlete/activities?per_page=100${

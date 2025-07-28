@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Strava Activity Visualizer
+
+A Next.js application that integrates with the Strava API to visualize your fitness activities in a GitHub-style contribution graph. Connect your Strava account and see your workout intensity displayed as a heatmap over the past year.
+
+## Features
+
+- **Strava OAuth Integration**: Secure authentication with your Strava account
+- **Activity Heatmap**: GitHub-style contribution graph showing activity intensity
+- **Distance-Based Visualization**: Activity squares colored by relative distance intensity
+- **52-Week View**: Full year calendar layout with daily activity representation
+- **Responsive Design**: Mobile-friendly interface built with Tailwind CSS
+
+## How It Works
+
+1. **Connect**: Authenticate with your Strava account using OAuth
+2. **Fetch**: Retrieves up to 500 of your recent activities via Strava API
+3. **Visualize**: Maps activities to calendar grid, with color intensity based on distance
+4. **Explore**: Hover over squares to see activity dates and intensity
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ installed
+- A Strava account with activities
+- Strava API credentials (Client ID and Client Secret)
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd strava-contributions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up Strava API credentials:
+   - Currently configured with hardcoded Client ID (120867)
+   - Client Secret is hardcoded in `app/login/page.tsx` (line 25)
+   - For production use, move these to environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. Start the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-To learn more about Next.js, take a look at the following resources:
+### Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Click "Connect with Strava" on the home page
+2. Authorize the application in Strava
+3. You'll be redirected to the activity graph showing your workout heatmap
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Development
 
-## Deploy on Vercel
+```bash
+# Start development server
+npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Build for production
+npm run build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Start production server
+npm start
+
+# Run linting
+npm run lint
+```
+
+## Technology Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **API**: Strava API v3
+- **Authentication**: OAuth 2.0
+- **State Management**: React hooks + localStorage
+
+## Architecture
+
+- `app/page.tsx` - Landing page with Strava connect button
+- `app/login/page.tsx` - OAuth callback handler and token exchange
+- `app/graph/page.tsx` - Activity visualization component
+- `app/StravaAdapter.tsx` - Strava API client singleton
+- Custom date calculation functions for accurate calendar positioning

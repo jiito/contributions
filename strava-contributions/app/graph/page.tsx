@@ -72,15 +72,15 @@ const ActivityGraph = () => {
   const [loading, setLoading] = useState(true);
   const fetchActivities = async () => {
     setLoading(true);
-
-    let activities: Activity[] = [];
-    for (let i = 1; i <= 5; i++) {
-      activities = activities.concat(
-        await getStravaAdapter().getActivitiesPage(i)
-      );
-      console.log(activities);
+    
+    try {
+      const activities = await getStravaAdapter().getAllActivities();
+      setActivities(activities || []);
+    } catch (error) {
+      console.error("Failed to fetch activities:", error);
+      setActivities([]);
     }
-    setActivities(activities);
+    
     setLoading(false);
   };
   useEffect(() => {
